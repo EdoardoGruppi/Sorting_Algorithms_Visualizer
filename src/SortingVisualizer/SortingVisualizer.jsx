@@ -9,7 +9,6 @@ export default class SortingVisualizer extends React.Component {
       array: [],
       bars: 100,
       maximum: 1000,
-      algo: "quickSort",
     };
   }
 
@@ -27,6 +26,14 @@ export default class SortingVisualizer extends React.Component {
     }
     this.setState({ array: array });
   }
+
+  mergeSort() {}
+
+  quickSort() {}
+
+  heapSort() {}
+
+  bubbleSort() {}
 
   render() {
     const { array } = this.state;
@@ -52,26 +59,17 @@ export default class SortingVisualizer extends React.Component {
           >
             NEW ARRAY
           </button>
-          <button
-            class="button_slide slide_down"
-            onClick={() => this.resetArray()}
-          >
-            NEW ARRAY
-          </button>
           <select
             id="select_box"
             class="box slide_down"
-            onChange={() =>
-              this.setState({
-                algo: document.getElementById("select_box").value,
-              })
-            }
+            onChange={() => this[document.getElementById("select_box").value]()}
           >
             <option value="bubbleSort">BUBBLE SORT</option>
             <option value="quickSort" selected>
               QUICK SORT
             </option>
             <option value="heapSort">HEAP SORT</option>
+            <option value="mergeSort">MERGE SORT</option>
           </select>
         </div>
       </div>
