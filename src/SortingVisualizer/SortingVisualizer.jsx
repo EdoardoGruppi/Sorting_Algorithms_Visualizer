@@ -2,6 +2,7 @@ import React from "react";
 import "./SortingVisualizer.css";
 import { performMergeSort } from "../SortingAlgorithms/MergeSort";
 import { performBubbleSort } from "../SortingAlgorithms/BubbleSort";
+import { performSelectionSort } from "../SortingAlgorithms/SelectionSort";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -97,6 +98,34 @@ export default class SortingVisualizer extends React.Component {
     }
   }
 
+  selectionSort() {
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const animations = performSelectionSort(this.state.array);
+    for (let i = 0; i < animations.length; i++) {
+      const [barOneIdx, barTwoIdx, swap] = animations[i];
+      const firstBarStyle = arrayBars[barOneIdx].style;
+      const secondBarStyle = arrayBars[barTwoIdx].style;
+      // Colour the compared bars in red
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "red";
+        secondBarStyle.backgroundColor = "red";
+      }, i * this.state.time);
+      // Swap the bars only if required
+      if (swap) {
+        setTimeout(() => {
+          const temp = firstBarStyle.height;
+          firstBarStyle.height = secondBarStyle.height;
+          secondBarStyle.height = temp;
+        }, (i + 0.5) * this.state.time);
+      }
+      // Convert the bars colour to the original state
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "yellow";
+        secondBarStyle.backgroundColor = "yellow";
+      }, (i + 1) * this.state.time);
+    }
+  }
+
   render() {
     const { array } = this.state;
     let max = Math.max(...array);
@@ -159,6 +188,7 @@ export default class SortingVisualizer extends React.Component {
             <option value="quickSort"> QUICK SORT </option>
             <option value="heapSort">HEAP SORT</option>
             <option value="mergeSort">MERGE SORT</option>
+            <option value="selectionSort">SELECTION SORT</option>
           </select>
         </div>
       </div>
