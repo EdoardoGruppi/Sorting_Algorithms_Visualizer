@@ -1,5 +1,6 @@
 import React from "react";
 import "./SortingVisualizer.css";
+import { performMergeSort } from "../SortingAlgorithms/SortingAlgorithms";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -7,8 +8,9 @@ export default class SortingVisualizer extends React.Component {
 
     this.state = {
       array: [],
-      bars: 100,
+      bars: 200,
       maximum: 1000,
+      time: 10,
     };
   }
 
@@ -27,7 +29,33 @@ export default class SortingVisualizer extends React.Component {
     this.setState({ array: array });
   }
 
-  mergeSort() {}
+  mergeSort() {
+    let max = Math.max(...this.state.array);
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const animations = performMergeSort(this.state.array);
+    for (let i = 0; i < animations.length; i++) {
+      let animation = animations[i];
+      if (animation[2]) {
+        const [barOneIdx, newHeight] = animation;
+        setTimeout(() => {
+          arrayBars[barOneIdx].style.backgroundColor = "red";
+          arrayBars[barOneIdx].style.height = `${(newHeight / max) * 87}vh`;
+        }, i * this.state.time);
+        setTimeout(() => {
+          arrayBars[barOneIdx].style.backgroundColor = "yellow";
+        }, (i + 1) * this.state.time);
+      } else {
+        setTimeout(() => {
+          arrayBars[animation[0]].style.backgroundColor = "red";
+          arrayBars[animation[1]].style.backgroundColor = "red";
+        }, i * this.state.time);
+        setTimeout(() => {
+          arrayBars[animation[0]].style.backgroundColor = "yellow";
+          arrayBars[animation[1]].style.backgroundColor = "yellow";
+        }, (i + 1) * this.state.time);
+      }
+    }
+  }
 
   quickSort() {}
 
@@ -44,7 +72,6 @@ export default class SortingVisualizer extends React.Component {
         {array.map((value, idx) => (
           <div
             className="array-bar"
-            key={idx}
             style={{
               height: `${(value / max) * 87}vh`,
               // The margin between bars is considered as well
