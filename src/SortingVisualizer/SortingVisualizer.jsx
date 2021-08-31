@@ -1,6 +1,6 @@
 import React from "react";
 import "./SortingVisualizer.css";
-import { performMergeSort } from "../SortingAlgorithms/SortingAlgorithms";
+import { performMergeSort } from "../SortingAlgorithms/MergeSort";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -8,7 +8,7 @@ export default class SortingVisualizer extends React.Component {
 
     this.state = {
       array: [],
-      bars: 200,
+      bars: 100,
       maximum: 1000,
       time: 10,
     };
@@ -27,6 +27,13 @@ export default class SortingVisualizer extends React.Component {
       array.push(randomIntFromInterval(10, this.state.maximum));
     }
     this.setState({ array: array });
+  }
+
+  resetBars() {
+    const newBars = document.getElementById("n_bars").value;
+    this.setState({ bars: newBars }, () => {
+      this.resetArray();
+    });
   }
 
   mergeSort() {
@@ -68,33 +75,61 @@ export default class SortingVisualizer extends React.Component {
     let max = Math.max(...array);
 
     return (
-      <div className="array-container">
+      <div id="array-container">
         {array.map((value, idx) => (
           <div
             className="array-bar"
+            key={idx}
             style={{
               height: `${(value / max) * 87}vh`,
               // The margin between bars is considered as well
-              width: `${(97 - 0.1 * this.state.bars) / this.state.bars}vw`,
+              width: `${(87 - 0.15 * this.state.bars) / this.state.bars}vw`,
             }}
           ></div>
         ))}
         <div>
+          <div style={{ display: "inline-block" }}>
+            <span className="rangeValue">BARS: {this.state.bars}</span>
+            <input
+              className="range"
+              id="n_bars"
+              type="range"
+              min="10"
+              step="10"
+              defaultValue="100"
+              max="200"
+              onChange={() => this.resetBars()}
+            ></input>
+          </div>
+          <div style={{ display: "inline-block" }}>
+            <span className="rangeValue">SPEED: {this.state.time} ms</span>
+            <input
+              className="range"
+              id="speed"
+              type="range"
+              min="2"
+              step="2"
+              defaultValue="10"
+              max="500"
+              onChange={() =>
+                this.setState({ time: document.getElementById("speed").value })
+              }
+            ></input>
+          </div>
           <button
-            class="button_slide slide_down"
+            className="button_slide slide_down"
             onClick={() => this.resetArray()}
           >
             NEW ARRAY
           </button>
           <select
             id="select_box"
-            class="box slide_down"
+            className="box slide_down"
             onChange={() => this[document.getElementById("select_box").value]()}
+            defaultValue="quickSort"
           >
             <option value="bubbleSort">BUBBLE SORT</option>
-            <option value="quickSort" selected>
-              QUICK SORT
-            </option>
+            <option value="quickSort"> QUICK SORT </option>
             <option value="heapSort">HEAP SORT</option>
             <option value="mergeSort">MERGE SORT</option>
           </select>
