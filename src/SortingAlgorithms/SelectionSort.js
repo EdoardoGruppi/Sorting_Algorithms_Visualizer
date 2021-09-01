@@ -13,7 +13,7 @@ export function performSelectionSort(array) {
     animations.push([i, min, 0]);
     // Swap the item in the current position with the minimum one only
     // if they do not correspond to the same element.
-    if (min != i) {
+    if (min !== i) {
       animations.push([i, min, 1]);
       let temp = array[i];
       array[i] = array[min];
