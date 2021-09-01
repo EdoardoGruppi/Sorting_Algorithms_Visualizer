@@ -176,7 +176,7 @@ export default class SortingVisualizer extends React.Component {
               min="1"
               step="1"
               defaultValue="10"
-              max="500"
+              max="1000"
               onChange={() =>
                 this.setState({ time: document.getElementById("speed").value })
               }
