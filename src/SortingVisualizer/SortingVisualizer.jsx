@@ -29,8 +29,11 @@ export default class SortingVisualizer extends React.Component {
   resetArray() {
     const array = [];
     for (let i = 0; i < this.state.bars; i++) {
-      // Start from 10 so to make it visible
-      array.push(randomIntFromInterval(10, this.state.maximum));
+      let new_value = randomIntFromInterval(10, this.state.maximum);
+      if (array.contains(new_value)) {
+        // Start from 10 so to make it visible
+        array.push();
+      } else i--;
     }
     this.setState({ array: array });
   }
@@ -172,7 +175,7 @@ export default class SortingVisualizer extends React.Component {
               type="range"
               min="1"
               step="1"
-              defaultValue="10"
+              defaultValue="20"
               max="500"
               onChange={() =>
                 this.setState({ time: document.getElementById("speed").value })
