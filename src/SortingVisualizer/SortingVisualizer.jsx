@@ -5,6 +5,7 @@ import { performBubbleSort } from "../SortingAlgorithms/BubbleSort";
 import { performSelectionSort } from "../SortingAlgorithms/SelectionSort";
 import { performInsertionSort } from "../SortingAlgorithms/InsertionSort";
 import { performQuickSort } from "../SortingAlgorithms/QuickSort";
+import { performHeapSort } from "../SortingAlgorithms/HeapSort";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -96,7 +97,33 @@ export default class SortingVisualizer extends React.Component {
     }
   }
 
-  heapSort() {}
+  heapSort() {
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const animations = performHeapSort(this.state.array);
+    for (let i = 0; i < animations.length; i++) {
+      const [barOneIdx, barTwoIdx, flag] = animations[i];
+      const firstBarStyle = arrayBars[barOneIdx].style;
+      const secondBarStyle = arrayBars[barTwoIdx].style;
+      // Colour the compared bars in red
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "red";
+        secondBarStyle.backgroundColor = "red";
+      }, i * this.state.time);
+      // Swap the bars only if required
+      if (flag) {
+        setTimeout(() => {
+          const temp = firstBarStyle.height;
+          firstBarStyle.height = secondBarStyle.height;
+          secondBarStyle.height = temp;
+        }, (i + 0.5) * this.state.time);
+      }
+      // Convert the bars colour to the original state
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "yellow";
+        secondBarStyle.backgroundColor = "yellow";
+      }, (i + 1) * this.state.time);
+    }
+  }
 
   bubbleSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
@@ -206,8 +233,8 @@ export default class SortingVisualizer extends React.Component {
               className="range"
               id="n_bars"
               type="range"
-              min="10"
-              step="10"
+              min="5"
+              step="5"
               defaultValue="100"
               max="200"
               onChange={() => this.resetBars()}
@@ -237,9 +264,13 @@ export default class SortingVisualizer extends React.Component {
           <select
             id="select_box"
             className="box slide_down"
-            onChange={() => this[document.getElementById("select_box").value]()}
-            defaultValue="quickSort"
+            onChange={() => {
+              let value = document.getElementById("select_box").value;
+              if (value !== "default") this[value]();
+            }}
+            defaultValue="default"
           >
+            <option value="default">ALGORITHM</option>
             <option value="bubbleSort">BUBBLE SORT</option>
             <option value="quickSort"> QUICK SORT </option>
             <option value="heapSort">HEAP SORT</option>
