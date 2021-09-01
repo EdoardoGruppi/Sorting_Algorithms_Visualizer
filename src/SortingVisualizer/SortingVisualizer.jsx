@@ -6,6 +6,7 @@ import { performSelectionSort } from "../SortingAlgorithms/SelectionSort";
 import { performInsertionSort } from "../SortingAlgorithms/InsertionSort";
 import { performQuickSort } from "../SortingAlgorithms/QuickSort";
 import { performHeapSort } from "../SortingAlgorithms/HeapSort";
+import { performShellSort } from "../SortingAlgorithms/ShellSort";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -41,6 +42,33 @@ export default class SortingVisualizer extends React.Component {
     });
   }
 
+  displaySimpleAnimation(arrayBars, animations) {
+    for (let i = 0; i < animations.length; i++) {
+      const [barOneIdx, barTwoIdx, swap] = animations[i];
+      const firstBarStyle = arrayBars[barOneIdx].style;
+      const secondBarStyle = arrayBars[barTwoIdx].style;
+      // Colour the compared bars in red
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "red";
+        secondBarStyle.backgroundColor = "red";
+      }, i * this.state.time);
+      // Swap the bars only if required
+      if (swap) {
+        setTimeout(() => {
+          [firstBarStyle.height, secondBarStyle.height] = [
+            secondBarStyle.height,
+            firstBarStyle.height,
+          ];
+        }, (i + 0.5) * this.state.time);
+      }
+      // Convert the bars colour to the original state
+      setTimeout(() => {
+        firstBarStyle.backgroundColor = "yellow";
+        secondBarStyle.backgroundColor = "yellow";
+      }, (i + 1) * this.state.time);
+    }
+  }
+
   mergeSort() {
     let max = Math.max(...this.state.array);
     const arrayBars = document.getElementsByClassName("array-bar");
@@ -72,141 +100,37 @@ export default class SortingVisualizer extends React.Component {
   quickSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
     const animations = performQuickSort(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, swap] = animations[i];
-      const firstBarStyle = arrayBars[barOneIdx].style;
-      const secondBarStyle = arrayBars[barTwoIdx].style;
-      // Colour the compared bars in red
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "red";
-        secondBarStyle.backgroundColor = "red";
-      }, i * this.state.time);
-      // Swap the bars only if required
-      if (swap) {
-        setTimeout(() => {
-          const temp = firstBarStyle.height;
-          firstBarStyle.height = secondBarStyle.height;
-          secondBarStyle.height = temp;
-        }, (i + 0.5) * this.state.time);
-      }
-      // Convert the bars colour to the original state
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "yellow";
-        secondBarStyle.backgroundColor = "yellow";
-      }, (i + 1) * this.state.time);
-    }
+    this.displaySimpleAnimation(arrayBars, animations);
   }
 
   heapSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
     const animations = performHeapSort(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, flag] = animations[i];
-      const firstBarStyle = arrayBars[barOneIdx].style;
-      const secondBarStyle = arrayBars[barTwoIdx].style;
-      // Colour the compared bars in red
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "red";
-        secondBarStyle.backgroundColor = "red";
-      }, i * this.state.time);
-      // Swap the bars only if required
-      if (flag) {
-        setTimeout(() => {
-          const temp = firstBarStyle.height;
-          firstBarStyle.height = secondBarStyle.height;
-          secondBarStyle.height = temp;
-        }, (i + 0.5) * this.state.time);
-      }
-      // Convert the bars colour to the original state
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "yellow";
-        secondBarStyle.backgroundColor = "yellow";
-      }, (i + 1) * this.state.time);
-    }
+    this.displaySimpleAnimation(arrayBars, animations);
   }
 
   bubbleSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
     const animations = performBubbleSort(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, swap] = animations[i];
-      const firstBarStyle = arrayBars[barOneIdx].style;
-      const secondBarStyle = arrayBars[barTwoIdx].style;
-      // Colour the compared bars in red
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "red";
-        secondBarStyle.backgroundColor = "red";
-      }, i * this.state.time);
-      // Swap the bars only if required
-      if (swap) {
-        setTimeout(() => {
-          const temp = firstBarStyle.height;
-          firstBarStyle.height = secondBarStyle.height;
-          secondBarStyle.height = temp;
-        }, (i + 0.5) * this.state.time);
-      }
-      // Convert the bars colour to the original state
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "yellow";
-        secondBarStyle.backgroundColor = "yellow";
-      }, (i + 1) * this.state.time);
-    }
+    this.displaySimpleAnimation(arrayBars, animations);
   }
 
   selectionSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
     const animations = performSelectionSort(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, swap] = animations[i];
-      const firstBarStyle = arrayBars[barOneIdx].style;
-      const secondBarStyle = arrayBars[barTwoIdx].style;
-      // Colour the compared bars in red
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "red";
-        secondBarStyle.backgroundColor = "red";
-      }, i * this.state.time);
-      // Swap the bars only if required
-      if (swap) {
-        setTimeout(() => {
-          const temp = firstBarStyle.height;
-          firstBarStyle.height = secondBarStyle.height;
-          secondBarStyle.height = temp;
-        }, (i + 0.5) * this.state.time);
-      }
-      // Convert the bars colour to the original state
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "yellow";
-        secondBarStyle.backgroundColor = "yellow";
-      }, (i + 1) * this.state.time);
-    }
+    this.displaySimpleAnimation(arrayBars, animations);
   }
 
   insertionSort() {
     const arrayBars = document.getElementsByClassName("array-bar");
     const animations = performInsertionSort(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-      const [barOneIdx, barTwoIdx, flag] = animations[i];
-      const firstBarStyle = arrayBars[barOneIdx].style;
-      const secondBarStyle = arrayBars[barTwoIdx].style;
-      // Colour the compared bars in red
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "red";
-        secondBarStyle.backgroundColor = "red";
-      }, i * this.state.time);
-      // Swap the bars only if required
-      if (flag) {
-        setTimeout(() => {
-          const temp = firstBarStyle.height;
-          firstBarStyle.height = secondBarStyle.height;
-          secondBarStyle.height = temp;
-        }, (i + 0.5) * this.state.time);
-      }
-      // Convert the bars colour to the original state
-      setTimeout(() => {
-        firstBarStyle.backgroundColor = "yellow";
-        secondBarStyle.backgroundColor = "yellow";
-      }, (i + 1) * this.state.time);
-    }
+    this.displaySimpleAnimation(arrayBars, animations);
+  }
+
+  shellSort() {
+    const arrayBars = document.getElementsByClassName("array-bar");
+    const animations = performShellSort(this.state.array);
+    this.displaySimpleAnimation(arrayBars, animations);
   }
 
   render() {
@@ -277,6 +201,7 @@ export default class SortingVisualizer extends React.Component {
             <option value="mergeSort">MERGE SORT</option>
             <option value="selectionSort">SELECTION SORT</option>
             <option value="insertionSort">INSERTION SORT</option>
+            <option value="shellSort">SHELL SORT</option>
           </select>
         </div>
       </div>

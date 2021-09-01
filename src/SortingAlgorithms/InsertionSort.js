@@ -8,9 +8,7 @@ export function performInsertionSort(array) {
     while (prev > -1 && temp < array[prev]) {
       // Perform the swap between the two compared items
       animations.push([prev, prev + 1, 1]);
-      temp = array[prev + 1];
-      array[prev + 1] = array[prev];
-      array[prev] = temp;
+      [array[prev + 1], array[prev]] = [array[prev], array[prev + 1]];
       prev--;
     }
   }
