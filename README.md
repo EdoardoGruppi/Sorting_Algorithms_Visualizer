@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# Sorting Algorithm Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Project](https://github.com/EdoardoGruppi/Sorting_Algorithms_Visualizer) ~ [Visualization Tool](https://edoardogruppi.github.io/Sorting_Algorithms_Visualizer/)
 
-## Available Scripts
+This project aims to provide a clear visualization about how the most widespread sorting algorithms work.
 
-In the project directory, you can run:
+It enables users to select the number of elements the array should have as well as the animation speed and the algorithm to perform.
 
-### `npm start`
+## How to run
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The Sorting Algorithms Visualiser tool is available at the following GitHub page: https://edoardogruppi.github.io/Sorting_Algorithms_Visualizer/.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Algorithms
 
-### `npm test`
+Precisely, the algorithms analysed are the following:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**1. Bubble Sort:** repeatedly swaps adjacent elements if not in order.
 
-### `npm run build`
+**2. Quick Sort:** It works recursively by taking the last element of the analysed collection of items as pivot. Hence, partitions the elements examined around it creating two sequences of numbers that are respectively smaller and grater than the pivot. The algorithm repeats itself until the initial array has been sorted.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**3. Heap Sort:** starts visualizing the items of the array as a particular type of complete binary tree which is referred to as a heap. In this project, the heap version is based on the max-heap property where the greatest number is placed at the root node. As it is probably the most complex algorithm here evaluated, a complete guide to better understand its functioning can be reached at [this link](https://www.programiz.com/dsa/heap-sort).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**4. Merge Sort:** It operates recursively dividing the examined array into two sequences. Once all the subarrays achieved are made up of only one elements,they are joined together in the correct sorting order and following the reverse process.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**5. Selection Sort:** after segmenting the array in two parts (left sorted and initially empty, right unordered), it moves the miminum item from the right subarray to the end of the left sequence.
 
-### `npm run eject`
+**6. Insertion Sort:** at the begininning the array is divided into a left sorted segment, which is initially empty, and a right unordered segment. One after the other, the first element in the right sequence is moved in the correct position of the left subarray.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**7. Shell Sort:** is an advancement of the Insertion Sort algorithm that works with element separated by a precise gap. The latter starts from N/2, with N that describes the length of the starting array, and at each iteration is reduced by half.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Additional Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Overall, this work also represents a good exercise from which to start practising the knowledge acquired on JavaScript, CSS and ReactJs.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## GIFs
