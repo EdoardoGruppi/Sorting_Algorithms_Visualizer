@@ -33,3 +33,7 @@ Precisely, the algorithms analysed are the following:
 Overall, this work also represents a good exercise from which to start practising the knowledge acquired on JavaScript, CSS and ReactJs.
 
 ## GIFs
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/48513387/131824280-27866ba3-1ec6-447b-958e-31ac302a3802.gif)
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/48513387/131824318-00caf12b-e851-49b8-b9ba-74cdf107b179.gif)
