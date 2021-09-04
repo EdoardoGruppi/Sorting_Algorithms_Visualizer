@@ -4,7 +4,7 @@
 
 This project aims to provide a clear visualization about how the most widespread sorting algorithms work.
 
-It enables users to select the number of elements the array should have as well as the animation speed and the algorithm to perform.
+Users can select the number of elements the array should have as well as the animation speed and the algorithm to perform.
 
 ## How to run
 
@@ -34,6 +34,12 @@ Overall, this work also represents a good exercise from which to start practisin
 
 ## GIFs
 
+### Setup
+
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/48513387/131824280-27866ba3-1ec6-447b-958e-31ac302a3802.gif)
 
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/48513387/131824318-00caf12b-e851-49b8-b9ba-74cdf107b179.gif)
+### Quick Sort Visualization 
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/48513387/132096886-82785bb4-57a7-4de2-bbd2-77ed1902e3d5.gif)
+
+### Insertion Sort Visualization 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/48513387/132096913-781d3864-fa03-4b03-a8e5-ae71beec6f24.gif)
