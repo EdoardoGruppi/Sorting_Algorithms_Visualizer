@@ -28,6 +28,19 @@ Precisely, the algorithms analysed are the following:
 
 **7. Shell Sort:** is an advancement of the Insertion Sort algorithm that works with element separated by a precise gap. The latter starts from N/2, with N that describes the length of the starting array, and at each iteration is reduced by half.
 
+## Time and Space complexity
+
+|   Algorithm    | Time Complexity | Time Complexity | Time Complexity  | Space Complexity |
+| :------------: | :-------------: | :-------------: | :--------------: | :--------------: |
+|       -        |      Best       |     Average     |      Worst       |        -         |
+|  Bubble Sort   |      O(n)       |     O(n^2)      |      O(n^2)      |       O(1)       |
+| Selection Sort |     O(n^2)      |     O(n^2)      |      O(n^2)      |       O(1)       |
+| Insertion Sort |      O(n)       |     O(n^2)      |      O(n^2)      |       O(1)       |
+|   Merge Sort   |  O(n\*log(n))   |  O(n\*log(n))   |   O(n\*log(n))   |       O(n)       |
+|   Quick Sort   |  O(n\*log(n))   |  O(n\*log(n))   |      O(n^2)      |    O(log(n))     |
+|   Heap Sort    |  O(n\*log(n))   |  O(n\*log(n))   |   O(n\*log(n))   |       O(1)       |
+|   Shell Sort   |  O(n\*log(n))   |  O(n\*log(n))   | O(n\*(log(n))^2) |       O(1)       |
+
 ## Additional Notes
 
 Overall, this work also represents a good exercise from which to start practising the knowledge acquired on JavaScript, CSS and ReactJs.
@@ -38,8 +51,10 @@ Overall, this work also represents a good exercise from which to start practisin
 
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/48513387/131824280-27866ba3-1ec6-447b-958e-31ac302a3802.gif)
 
-### Quick Sort Visualization 
+### Quick Sort Visualization
+
 ![ezgif com-gif-maker](https://user-images.githubusercontent.com/48513387/132096886-82785bb4-57a7-4de2-bbd2-77ed1902e3d5.gif)
 
-### Insertion Sort Visualization 
+### Insertion Sort Visualization
+
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/48513387/132096913-781d3864-fa03-4b03-a8e5-ae71beec6f24.gif)
