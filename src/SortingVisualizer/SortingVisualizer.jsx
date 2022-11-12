@@ -71,7 +71,8 @@ export default function SortingVisualizer() {
     stopExecution();
     resetArray();
     recoverBars();
-  }, [bars, stopExecution, resetArray, recoverBars])
+    //eslint-disable-next-line
+  }, [bars])
 
   const changeButtonText = () => {
     const btn = document.getElementById("btn");
