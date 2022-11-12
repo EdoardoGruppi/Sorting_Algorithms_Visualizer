@@ -71,7 +71,7 @@ export default function SortingVisualizer() {
     stopExecution();
     resetArray();
     recoverBars();
-  }, [bars])
+  }, [bars, stopExecution, resetArray, recoverBars])
 
   const changeButtonText = () => {
     const btn = document.getElementById("btn");
